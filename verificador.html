@@ -1,5 +1,5 @@
 <!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
-<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<title>Verificador · ¡Yo Le Entrooo!</title><style>html,body{margin:0;background:#000;overflow:hidden;font:600 15px system-ui,sans-serif;color:#fff}canvas{display:block;height:100dvh;max-width:100vw;object-fit:contain;margin:0 auto}#b{position:fixed;inset:0 0 auto;display:flex;gap:8px;align-items:center;justify-content:center;padding:8px;background:rgba(11,10,36,.85)}#b input{width:8em;font:inherit;padding:6px 8px;border-radius:8px;border:1px solid #35e6ff;background:#0b0a24;color:#fff}#b button{font:inherit;padding:6px 14px;border-radius:8px;border:0;background:#ffd23f;color:#231046}#b a{color:#35e6ff}</style><div id="b"><a href="./">← Reglas</a><label for="n">Número:</label><input id="n" inputmode="numeric"><button id="v">Ver carrera</button><span>Ejemplo con cuentas simuladas</span></div>
 <canvas id="c" width="1080" height="1920"></canvas>
 <script src="three.min.js"></script>
 <script src="carrera.js"></script>
@@ -203,9 +203,11 @@ window.renderFrame=function(f){
     if(e>.2&&e<2.6)T('¡CLASIFICADOS!',540,720,120*pop(e,.2),'#3ee6a0',{glow:'#3ee6a0',rot:-.03});
     if(e>=2.6){ctx.save();ctx.globalAlpha=clamp((e-2.6)/.4,0,1);ctx.fillStyle='rgba(6,10,19,.9)';ctx.strokeStyle='#ff2d78';ctx.lineWidth=4;ctx.beginPath();ctx.roundRect(150,600,780,520,30);ctx.fill();ctx.stroke();ctx.restore();
       T('ELIMINADOS',540,700,84*pop(e,2.7),'#ff2d78',{glow:'#ff2d78'});g.elim.forEach((id,i)=>T(J[id][0],540,800+i*74,50*pop(e,3+i*.25),'#fff',{m:1,st:0}));
-      if(e>4.4){T('MAÑANA: PRUEBA 2',540,1230,70*pop(e,4.4),'#ffd23f',{glow:'#ffd23f'});T('TODOS LOS LUNES, CONCURSO NUEVO',540,1310,40*pop(e,4.8),'#fff',{glow:'#35e0ff'});T('SIGUE A @YoLeEntrooo',540,1390,50*pop(e,5.1),'#3ee6a0',{glow:'#3ee6a0'})}}}
-  return cv.toDataURL('image/jpeg',.93);
+      if(e>4.4){T('MAÑANA: SEMIFINAL',540,1230,70*pop(e,4.4),'#ffd23f',{glow:'#ffd23f'});T('TODOS LOS LUNES, CONCURSO NUEVO',540,1310,40*pop(e,4.8),'#fff',{glow:'#35e0ff'});T('SIGUE A @YoLeEntrooo',540,1390,50*pop(e,5.1),'#3ee6a0',{glow:'#3ee6a0'})}}}
+  return 0; // ponytail: el verificador solo dibuja; el JPEG es para la grabadora (carrera.html)
 };
 (async()=>{try{await Promise.all([document.fonts.load("40px 'Luckiest Guy'"),document.fonts.load("700 20px 'JetBrains Mono'")])}catch(e){}
-  g=makeCarrera(J.map((_,i)=>i),SEED);build();window.listo=true})();
+  g=makeCarrera(J.map((_,i)=>i),SEED);build();window.listo=true;
+  const ni=document.getElementById('n');ni.value=SEED;document.getElementById('v').onclick=()=>{const v=parseInt(ni.value,10);if(v>=0)location.search='?n='+v};
+  const t0=performance.now();(function lp(){renderFrame(Math.min(Math.floor((performance.now()-t0)/1000*FPS),TOTAL_FRAMES-1));requestAnimationFrame(lp)})()})();
 </script>
