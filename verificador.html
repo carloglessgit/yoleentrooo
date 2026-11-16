@@ -112,11 +112,11 @@ function lunes(tv){ // cada golpe dura lo que dura su frase de voz
   const B=(a,b)=>tv>=a&&tv<b,o=(a,b)=>clamp((tv-a)/.2,0,1)*clamp((b-tv)/.25,0,1),Y='#ffd23f',C='#8ff3ff',Gn='#3ee6a0';
   const pan=(x,y,w,h,col,a)=>{ctx.save();ctx.globalAlpha=a;ctx.fillStyle='rgba(6,10,19,.88)';ctx.strokeStyle=col;ctx.lineWidth=5;ctx.beginPath();ctx.roundRect(x,y,w,h,34);ctx.fill();ctx.stroke();ctx.restore()};
   if(B(0,4)){const a=o(0,4);T(PREMIO,540,930,440*pop(tv,.1),Y,{glow:Y,a,sw:.07});T('PARA UNO SOLO',540,1110,100*pop(tv,.9),'#fff',{glow:'#35e0ff',a});T('¡Y ESE UNO PUEDES SER TÚ!',540,1210,58*pop(tv,2.1),C,{glow:'#35e0ff',a})}
-  if(B(4,10)){const a=o(4,10);T('ASÍ SE JUEGA',540,500,64*pop(tv,4.1),C,{glow:'#35e0ff',a});T('ESCOGE UN PERSONAJE',540,620,86*pop(tv,4.3),'#fff',{glow:'#35e0ff',a});
+  if(B(4,10)){const a=o(4,10);T('ASÍ SE JUEGA',540,500,64*pop(tv,4.1),C,{glow:'#35e0ff',a});T('COMENTA UN SOLO PERSONAJE',540,620,64*pop(tv,4.3),'#fff',{glow:'#35e0ff',a});
     const pa=a*clamp((tv-5)/.3,0,1);pan(170,760,740,200,'#35e0ff',pa);ctx.save();ctx.globalAlpha=pa;ctx.beginPath();ctx.arc(270,860,56,0,7);ctx.fillStyle='#5a78a8';ctx.fill();ctx.restore();
     T('tu_usuario',350,835,36,C,{m:1,st:0,al:'left',a:pa});T('AZUL'.slice(0,Math.floor(clamp((tv-5.5)/.25,0,4)))+(tv<6.6&&Math.floor(tv*4)%2?'|':''),350,910,62,'#fff',{m:1,st:0,al:'left',a:pa});
     if(tv>6.7)T('✔',810,890,110*pop(tv,6.7),Gn,{st:0,a,glow:Gn});
-    T('SI ERES DE LOS PRIMEROS EN COMENTARLO',540,1120,46*pop(tv,7.3),'#fff',{glow:'#35e0ff',a});T('¡ESE PERSONAJE ERES TÚ!',540,1230,88*pop(tv,7.8),Y,{glow:Y,a})}
+    T('SORTEAMOS UNO AL AZAR',540,1100,70*pop(tv,7.3),'#fff',{glow:'#35e0ff',a});T('ENTRE TODOS LOS QUE LO ESCOGIERON',540,1175,44*pop(tv,7.6),C,{glow:'#35e0ff',a});T('¡Y ESE PERSONAJE ERES TÚ!',540,1300,76*pop(tv,8.4),Y,{glow:Y,a})}
   if(B(10,19)){const a=o(10,19);T('PARA ENTRAR NECESITAS',540,480,70*pop(tv,10.1),'#fff',{glow:'#35e0ff',a});
     ['SEGUIR ESTA CUENTA','UNA PUBLICACIÓN DE HACE +1 AÑO','CUENTA MEXICANA A TU NOMBRE (CLABE)'].forEach((s,i)=>{const t0=10.9+i*2.1,y=680+i*160,k=pop(tv,t0);if(k<=0)return;pan(110,y-78,860,116,tv>t0+.5?Gn:'#35e0ff',a*Math.min(1,k));
       if(tv>t0+.5)T('✔',180,y+8,76*pop(tv,t0+.5),Gn,{st:0,a});T(s,240,y+2,s.length>30?33:s.length>24?40:48,'#fff',{al:'left',a})});
@@ -131,8 +131,7 @@ function lunes(tv){ // cada golpe dura lo que dura su frase de voz
     T('LO DECIDE EL JUEGO',540,1200,70*pop(tv,38.2),Y,{glow:Y,a});T('Compruébalo tú: link en el perfil',540,1290,40*pop(tv,39.6),'#fff',{m:1,st:0,a})}
   if(B(42,48)){const a=o(42,48);T('SI GANAS',540,480,100*pop(tv,42.1),Y,{glow:Y,a});
     [['💬','TE ESCRIBIMOS POR MENSAJE'],['💸','TE TRANSFERIMOS A TU CLABE'],['🏆','ENTRAS A LA TABLA DE CAMPEONES']].forEach((r,i)=>{const t0=42.6+i*1.4,y=670+i*190,k=pop(tv,t0);if(k<=0)return;pan(110,y-90,860,150,i===2?Y:'#35e0ff',a*Math.min(1,k));T(r[0],190,y+18,80,'#fff',{st:0,a});T(r[1],270,y+6,r[1].length>26?38:44,'#fff',{al:'left',a})});T('¿SIN CLABE A TU NOMBRE? EL PREMIO PASA AL SIGUIENTE LUGAR',540,1260,30*pop(tv,46.4),'#ff8fa8',{a})}
-  if(B(48,52)){const a=o(48,52.4);T('CADA',540,560,84*pop(tv,48.1),'#fff',{glow:'#35e0ff',a});T('20,000',540,790,250*pop(tv,48.3),Y,{glow:Y,a});T('SEGUIDORES',540,900,84*pop(tv,48.6),'#fff',{glow:'#35e0ff',a});T('EN ESTA PLATAFORMA',540,990,64*pop(tv,48.8),C,{glow:'#35e0ff',a});
-    T('= PREMIO ESPECIAL',540,1140,92*pop(tv,49.3),Gn,{glow:Gn,a});T('solo para los de esta plataforma',540,1220,42*pop(tv,49.6),'#fff',{a});T('ENTRE MÁS SEGUIDORES SEAMOS,',540,1340,44*pop(tv,50.4),'#fff',{glow:'#35e0ff',a});T('¡LOS PREMIOS VAN MEJORANDO!',540,1410,58*pop(tv,50.7),Y,{glow:Y,a})}
+  if(B(48,52)){const a=o(48,52.4);T('ENTRE MÁS',540,640,120*pop(tv,48.1),'#fff',{glow:'#35e0ff',a});T('SEGUIDORES SEAMOS,',540,780,92*pop(tv,48.4),'#fff',{glow:'#35e0ff',a});T('¡LOS PREMIOS',540,1010,124*pop(tv,49.2),Y,{glow:Y,a});T('VAN MEJORANDO!',540,1150,108*pop(tv,49.5),Y,{glow:Y,a})}
 }
 window.renderFrame=function(f){
   if(f<fPrev){location.reload()}fPrev=f;const tv=f/FPS,ts=LUNES?Math.min(tv*(tOver+2.5)/TIEMPOS.T1,tEnd-.3):simT(tv),dtv=1/FPS;TV=tv;avanza(ts);const rk=g.rank();
